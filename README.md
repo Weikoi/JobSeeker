@@ -4,7 +4,7 @@
 ## 1.编程语言
 
  [1.1 Python](编程语言/Python.md)
- [1.2 Java](编程语言/Java.md)
+ [1.2 Java](编程语言/java.md)
  [1.3 Golang](编程语言/Golang.md)
 
 ## 2.算法与数据结构
