@@ -1,6 +1,6 @@
 ## Java实现版本
 （参考算法4）
-
+---
 #### 欧几里得算法（求最大公约数）
 
 核心思想就是辗转相除: gcd(m, n) = gcd(m, m % n)
@@ -57,5 +57,43 @@ public class numsDemo {
 ```
 ---
 #### 牛顿迭代法（求完全平方根）
+Java实现开平方的牛顿迭代法. 就是求f(x)=x^2-C的根的正根。
+推导过程参考：
+https://baike.baidu.com/item/牛顿迭代法
+和
+https://blog.csdn.net/ccnt_2012/article/details/81837154
+```
+import java.util.Random;
 
+public class numsDemo {
+    public static void main(String[] args) {
+        System.out.println("生成的随机浮点数的完全平方根为" + sqrt(100));
+    }
+
+    public static double sqrt(int bound) {
+        Random random = new Random();
+        double c = random.nextInt(bound) + random.nextDouble();
+
+        if (c < 0) {
+            return Double.NaN;
+        }
+        double e = 1e-15;
+        double x = c;
+        double y = (x + c / x) / 2;
+        while (Math.abs(x - y) > e) {
+            x = y;
+            y = (x + c / x) / 2;
+        }
+        return x;
+    }
+}
+```
+---
+---
+### 查找
+#### 二分查找
+```
+public class binarySearch{
+    
+```
 
