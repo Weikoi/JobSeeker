@@ -1,6 +1,9 @@
 ## Java实现版本
 （参考算法4）
+
 ---
+---
+### 基础算法
 #### 欧几里得算法（求最大公约数）
 
 核心思想就是辗转相除: gcd(m, n) = gcd(m, m % n)
@@ -34,7 +37,7 @@ public class GcdAlgorithms {
 
 #### 判断随机整数是否为素数
 
-注意i取平方减少判断次数,因为一个数不可能被大于自己完全平方根的数整除
+注意 i 取平方减少判断次数,因为一个数不可能被大于自己完全平方根的数整除
 ```
 import java.util.Random;
 
@@ -93,7 +96,29 @@ public class numsDemo {
 ### 查找
 #### 二分查找
 ```
-public class binarySearch{
+public class binarySearch {
+    public static void main(String[] args) {
+        int[] nums = new int[]{2,3,4,5,6,7,8,9};
+        System.out.println(search(5, nums, 0, nums.length));
+    }
+    public static int search(int key, int[] nums, int low, int high) {
+
+        int mid = (low + high) / 2;
+
+        if (nums[mid] == key) {
+            return mid;
+        }
+        else if (nums[mid] < key) {
+            low = mid + 1;
+            return search(key, nums, low, high);
+        }
+        else if (nums[mid] > key) {
+            high = mid - 1;
+            return search(key, nums, low, high);
+        }
+        return -1;
+    }
+}
     
 ```
 
