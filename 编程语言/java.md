@@ -203,7 +203,7 @@ public void func() { } // overrrides Base.f()
 
 
 * Hiding（隐藏）
-一个域，静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。静态方法和成员类型
+静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。
 ```
 class Base {
 public static void f() { }
@@ -212,7 +212,7 @@ class Derived extends Base {
 public static void f() { } // hides Base.f()
 }
 ```
-注意：静态方法即类方法的调用不同于实例方法，不是和实例绑定的
+注意：静态方法即类方法的调用不同于实例方法，不是和实例绑定的，通过类名来调用。
 
 
 * Overloading (重载)
@@ -247,9 +247,11 @@ public static void main(String[] args) {
 System.out.println("hello, obscure world!");
 }
 ```
-父子类之间也会出现字段遮盖，很类似于方法重写的机制，可用super调用父字段。
+父子类之间也会出现字段遮盖，可用super调用父字段。
 
 ---
+
+
 
 
 
