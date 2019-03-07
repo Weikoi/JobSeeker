@@ -190,7 +190,7 @@ clone()比较特殊，对于对象而言，它是深拷贝，但是对于数组�
 
 参考https://blog.csdn.net/devilmaycc/article/details/22792023
 
-*Overriding(覆写,又称为重写）
+* Overriding(覆写,又称为重写）
 一个实例方法可以override它的父类中可以访问的具有相同签名的所有实例方法。
 ```
 class Base {
