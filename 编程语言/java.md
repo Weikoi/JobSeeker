@@ -247,7 +247,7 @@ public static void main(String[] args) {
 System.out.println("hello, obscure world!");
 }
 ```
-父子内之剑也会出现字段遮盖，很类似于方法重写的机制，可用super调用父字段。
+父子类之间也会出现字段遮盖，很类似于方法重写的机制，可用super调用父字段。
 
 ---
 
