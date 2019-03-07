@@ -185,6 +185,79 @@ clone()比较特殊，对于对象而言，它是深拷贝，但是对于数组�
 
 ---
 
+#### Java中的几个常用术语分别代表什么含义？
+分别是覆写override，隐藏hiding，重载overload，遮蔽shadowing，遮盖obscuring
+参考https://blog.csdn.net/devilmaycc/article/details/22792023
+
+*Overriding(覆写,又称为重写）
+一个实例方法可以override它的父类中可以访问的具有相同签名的所有实例方法。
+```
+class Base {
+public void func() { }
+}
+class Derived extends Base {
+public void func() { } // overrrides Base.f()
+}
+```
+
+*Hiding（隐藏）
+一个域，静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。静态方法和成员类型
+```
+class Base {
+public static void f() { }
+}
+class Derived extends Base {
+public static void f() { } // hides Base.f()
+}
+```
+
+*Hiding（隐藏）
+一个域，静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。静态方法和成员类型
+```
+class Base {
+public static void f() { }
+}
+class Derived extends Base {
+public static void f() { } // hides Base.f()
+}
+```
+注意：静态方法即类方法的调用不同于实例方法，不是和实例绑定的
+
+
+*Overloading (重载)
+类中的方法可以重载类中的其他的方法，只要他们具有相同的名字和不同的签名(参数个数不同，参数，类型不同，如果仅仅是返回值不同的话，编译报错)
+```
+class CircuitBreaker {
+      public void f(int i){ } // int overloading
+      public void f(String s) { } // String overloading
+}
+```
+
+*Shadowing(遮蔽)
+当前作用域一个变量，方法或者类型可以遮蔽其他其他作用域的具有相同名字的变量，方法和类型
+```
+class WhoKnows {
+      static String sentence = "I don't know.";
+}
+public static void main(String[] args) {
+       String sentence = "I know!";// shadows static field
+       System.out.println(sentence);// prints local variable
+}
+```
+
+*Obscuring（遮盖）
+在同一个作用范围中，如果出现了具有相同名字的变量，类型(方法，类，接口等)，包名，变量会遮盖类型和包，类型回遮盖包，其实只用遵守java的命名规范就可以消除产生遮盖的可能性
+```
+public class Obscure {
+static String System; // Obscures type java.lang.System
+}
+public static void main(String[] args) {
+// Next line won't compile: System refers to static field
+System.out.println("hello, obscure world!");
+}
+```
+父子内之剑也会出现字段遮盖，很类似于方法重写的机制，可用super调用父字段。
+
 
 
 
