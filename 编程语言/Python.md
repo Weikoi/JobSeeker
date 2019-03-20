@@ -9,7 +9,7 @@
 #### Python 中的深浅拷贝？
 
 
-#### Python中的解释器？
+#### Python中的装饰器？
 
 
 #### Python中的元类？

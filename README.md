@@ -39,4 +39,10 @@
  [5.3 非关系型数据MongoDB]
  
 ---
-## 6.其它
+## 6.大数据框架
+
+ [6.1 Hadoop]
+ 
+ [6.2 Spark/Storm/Samza]
+ 
+ [6.3 Kafka]

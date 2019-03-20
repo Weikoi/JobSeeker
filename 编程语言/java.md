@@ -68,7 +68,7 @@ PHP、Perl、Ruby 和 Python)都直接从源码解释程序(一般会从输入�
 #### Java是如何处理异常的？
 
 Java 解释器执行 throw 语句时,会立即停止常规的程序执行,开始寻找能捕获或处理异常
-的异常处理程序。异常处理程序使用 try/catch/finally 语句编写,下一节会介绍。Java
+的异常处理程序。异常处理程序使用 try/catch/finally 语句编写。Java
 解释器先在当前代码块中查找异常处理程序,如果有,解释器会退出这个代码块,开始执
 行异常处理代码。异常处理程序执行完毕后,解释器会继续执行处理程序后的语句。
 
@@ -185,8 +185,40 @@ clone()比较特殊，对于对象而言，它是深拷贝，但是对于数组�
 
 ---
 
+#### 字符串的赋值机制？
+
+Java的字符串存在方法区的常量池中，方便重复使用。
+其中new操作符会先在堆内存中开辟新的String对象，再指向方法区中的String数值；
+而直接赋值操作则直接指向方法区，因此这两步的地址不一致，但是直接赋值的结果地址一致；
+见代码：
+
+```
+public class StringDemo {
+    public static void main(String[] args) {
+        String s1 = new String("Happy Coding!");
+        String s2 = "Happy Coding!";
+        String s3 = "Happy Coding!";
+        
+        System.out.println("s1 compare to s2 is " + (s1 == s2));
+        System.out.println("s2 compare to s3 is " + (s2 == s3));
+    }
+}
+
+
+结果：
+s1 compare to s2 is false
+s2 compare to s3 is true
+
+Process finished with exit code 0
+```
+示意图：
+<div align="center"> <img src="./pic/001.png"/> </div>
+
+---
+
+
 #### Java中的几个常用术语分别代表什么含义？
-分别是覆写override，隐藏hiding，重载overload，遮蔽shadowing，遮盖obscuring
+分别是覆写override，隐藏hiding，重载overloading，遮蔽shadowing，遮盖obscuring
 
 参考https://blog.csdn.net/devilmaycc/article/details/22792023
 
@@ -194,10 +226,10 @@ clone()比较特殊，对于对象而言，它是深拷贝，但是对于数组�
 一个实例方法可以override它的父类中可以访问的具有相同签名的所有实例方法。
 ```
 class Base {
-public void func() { }
+    public void func() { }
 }
 class Derived extends Base {
-public void func() { } // overrrides Base.f()
+    public void func() { } // overrrides Base.f()
 }
 ```
 
@@ -237,14 +269,15 @@ public static void main(String[] args) {
 ```
 
 * Obscuring（遮盖）
-在同一个作用范围中，如果出现了具有相同名字的变量，类型(方法，类，接口等)，包名，变量会遮盖类型和包，类型回遮盖包，其实只用遵守java的命名规范就可以消除产生遮盖的可能性
+在同一个作用范围中，如果出现了具有相同名字的变量，类型(方法，类，接口等)，包名，变量会遮盖类型和包，类型会遮盖包，其实只用遵守java的命名规范就可以消除产生遮盖的可能性。
 ```
 public class Obscure {
-static String System; // Obscures type java.lang.System
+    // Obscures type java.lang.System
+    static String System; 
 }
 public static void main(String[] args) {
-// Next line won't compile: System refers to static field
-System.out.println("hello, obscure world!");
+    // Next line won't compile: System refers to static field
+    System.out.println("hello, obscure world!");
 }
 ```
 父子类之间也会出现字段遮盖，可用super调用父字段。
