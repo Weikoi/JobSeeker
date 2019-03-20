@@ -4,6 +4,7 @@
 
 ---
 ---
+
 ### Java常识
 
 Java 编程环境出现于 20 世纪 90 年代末,由 Java 语言和 runtime 组成。runtime 也叫 Java 虚
@@ -188,8 +189,11 @@ clone()比较特殊，对于对象而言，它是深拷贝，但是对于数组�
 #### 字符串的赋值机制？
 
 Java的字符串存在方法区的常量池中，方便重复使用。
+
 其中new操作符会先在堆内存中开辟新的String对象，再指向方法区中的String数值；
-而直接赋值操作则直接指向方法区，因此这两步的地址不一致，但是直接赋值的结果地址一致；
+
+而直接赋值操作则直接指向方法区，因此s1与s2的地址不一致，但是同样是直接赋值的s2和s3地址一致；
+
 见代码：
 
 ```
@@ -238,10 +242,10 @@ class Derived extends Base {
 静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。
 ```
 class Base {
-public static void f() { }
+    public static void f() { }
 }
 class Derived extends Base {
-public static void f() { } // hides Base.f()
+    public static void f() { } // hides Base.f()
 }
 ```
 注意：静态方法即类方法的调用不同于实例方法，不是和实例绑定的，通过类名来调用。
