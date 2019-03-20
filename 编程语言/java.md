@@ -220,6 +220,17 @@ Process finished with exit code 0
 
 ---
 
+#### Java中的String, StringBuffer, StringBuilder区别？
+
+* String 是最基本的字符串类，分配内存后内容就不能改变，这样连续的拼接操作将会非常费时费空间；
+
+因此引入内容可变的以下两种类，对类型没有要求：
+
+* StringBuffer 是线程安全的，但是效率较低；
+
+* StringBuilder效率更高，但是不支持多线程，如果需要线程同步，那么建议使用StringBuffer。
+
+---
 
 #### Java中的几个常用术语分别代表什么含义？
 分别是覆写override，隐藏hiding，重载overloading，遮蔽shadowing，遮盖obscuring
