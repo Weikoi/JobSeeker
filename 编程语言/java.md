@@ -3,14 +3,8 @@
 (参考Core Java和Java in a Nutshell)
 
 ---
----
 
 ### Java常识
-
-Java 编程环境出现于 20 世纪 90 年代末,由 Java 语言和 runtime 组成。runtime 也叫 Java 虚
-拟机(Java Virtual Machine,JVM)。
-
----
 
 #### 什么是JVM？
 JVM 是一个程序,提供了运行 Java 程序所需的运行时环境。如果某个硬件和操作系统平
@@ -233,12 +227,12 @@ Process finished with exit code 0
 ---
 
 #### Java中的几个常用术语分别代表什么含义？
-分别是覆写override，隐藏hiding，重载overloading，遮蔽shadowing，遮盖obscuring
+分别是重写override，重载overloading，隐藏hiding，遮蔽shadowing，遮盖obscuring
 
 参考https://blog.csdn.net/devilmaycc/article/details/22792023
 
-* Overriding(覆写,又称为重写）
-一个实例方法可以override它的父类中可以访问的具有相同签名的所有实例方法。
+* Overriding(重写）
+一个实例方法可以重写它父类中可以访问的具有相同签名的所有实例方法。（子类权限修饰符必须大于等于父类）
 ```
 class Base {
     public void func() { }
@@ -248,6 +242,14 @@ class Derived extends Base {
 }
 ```
 
+* Overloading (重载)
+类中的方法可以重载类中的其他的方法，只要他们具有相同的名字和不同的签名(参数个数不同，参数类型不同或者参数顺序不同，如果仅仅是返回值不同的话，编译报错)
+```
+class CircuitBreaker {
+      public void f(int i){ } // int overloading
+      public void f(String s) { } // String overloading
+}
+```
 
 * Hiding（隐藏）
 静态方法，成员类型都会隐藏他的父类中可以访问的具有相同名字的域。
@@ -260,16 +262,6 @@ class Derived extends Base {
 }
 ```
 注意：静态方法即类方法的调用不同于实例方法，不是和实例绑定的，通过类名来调用。
-
-
-* Overloading (重载)
-类中的方法可以重载类中的其他的方法，只要他们具有相同的名字和不同的签名(参数个数不同，参数，类型不同，如果仅仅是返回值不同的话，编译报错)
-```
-class CircuitBreaker {
-      public void f(int i){ } // int overloading
-      public void f(String s) { } // String overloading
-}
-```
 
 * Shadowing(遮蔽)
 当前作用域一个变量，方法或者类型可以遮蔽其他其他作用域的具有相同名字的变量，方法和类型
@@ -298,14 +290,6 @@ public static void main(String[] args) {
 父子类之间也会出现字段遮盖，可用super调用父字段。
 
 ---
-
-
-
-
-
-
-
-
 
 
 ---
