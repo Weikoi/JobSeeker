@@ -7,7 +7,7 @@
 #### 欧几里得算法（求最大公约数）
 
 核心思想就是辗转相除: gcd(m, n) = gcd(m, m % n)
-```
+```java
 
 public class GcdAlgorithms {
     public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class GcdAlgorithms {
 #### 判断随机整数是否为素数
 
 注意 i 取平方减少判断次数,因为一个数不可能被大于自己完全平方根的数整除
-```
+```java
 import java.util.Random;
 
 public class numsDemo {
@@ -65,7 +65,7 @@ Java实现开平方的牛顿迭代法. 就是求f(x)=x^2-C的根的正根。
 https://baike.baidu.com/item/牛顿迭代法
 和
 https://blog.csdn.net/ccnt_2012/article/details/81837154
-```
+```java
 import java.util.Random;
 
 public class numsDemo {
