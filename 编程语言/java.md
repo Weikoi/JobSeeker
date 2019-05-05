@@ -251,7 +251,7 @@ Process finished with exit code 0
 
 * StringBuffer 是线程安全的，但是效率较低；
 
-* StringBuilder效率更高，但是不支持多线程，如果需要线程同步，那么建议使用StringBuffer。
+* StringBuilder 效率更高，但是不支持多线程，如果需要线程同步，那么建议使用StringBuffer。
 
 ---
 
@@ -320,7 +320,7 @@ public static void main(String[] args) {
 
 ---
 
-什么是Java的泛型？
+#### 什么是Java的泛型？
 
 由于集合可以存储任意类型的对象，当我们存储了不同类型的对象，就有可能在转换的时候出现类型转换异常，
 所以java为了解决这个问题，给我们提供了一种机制，叫做泛型
@@ -334,8 +334,18 @@ public static void main(String[] args) {
 什么时候可以使用泛型？
 		问API，当我们看到<E>，就可以使用泛型了
 			
+---
+#### 为什么Java中要废弃stack，建议用LinkedList来模拟栈？
+参考https://www.xttblog.com/?p=3416
 
 
+因为 Stack 是 JDK 1.0 的产物。它继承自 Vector，Vector 都不被推荐使用了，你说 Stack 还会被推荐吗？
+
+当初 JDK1.0 在开发时，为了快速的推出一些基本的数据结构操作，所以推出了一些比较粗糙的类。比如，Vector、Stack、Hashtable等。这些类中的一些方法加上了 synchronized 关键字，容易给一些初级程序员在使用上造成一些误解！而且在之前的几个版本中，性能还不怎么好。
+
+基于 Vector 实现的栈 Stack。底层实际上还是数组，所以还是存在需要扩容。Vector 是由数组实现的集合类，他包含了大量集合处理的方法。而 Stack 之所以继承 Vector，是为了复用 Vector 中的方法，来实现进栈（push）、出栈(pop)等操作。这里就是 Stack 设计不好的地方，既然只是为了实现栈，不用链表来单独实现，而是为了复用简单的方法而迫使它继承 Vector，Stack 和 Vector 本来是毫无关系的。这使得 Stack 在基于数组实现上效率受影响，另外因为继承 Vector 类，Stack 可以复用 Vector 大量方法，这使得 Stack 在设计上不严谨。 
+
+推荐使用LinkedList来模拟栈，它实现了List和Deque的接口，自带pop和push操作。
 
 ---
 ---
