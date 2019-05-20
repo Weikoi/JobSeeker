@@ -140,8 +140,6 @@ public class binarySearch {
     }
 }
 ```
-#### 暴力查找（又称白名单过滤）
-此处略去
 
 ---
 ---
