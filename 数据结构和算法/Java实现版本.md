@@ -97,7 +97,7 @@ public class numsDemo {
 
 ### 查找
 #### 二分查找
-```
+```java
 public class binarySearch {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 4, 5, 6, 7, 8, 9};
@@ -174,5 +174,64 @@ public static void insertSort(int[] a) {
 ```
 
 
+---
+#### 树算法
+
+BFS：
+```java
+public void levelOrderTraversal(TreeNode root){
+      if(node==null){
+            System.out.print("empty tree"); 
+            return;
+      }
+      LinkedList<ListNode> queue = new LinkedList<>();
+      queue.add(root);
+      while(!queue.isEmpty()){
+            ListNode node = queue.poll();
+            System.out.print(node.val+"  ");
+            if(node.left!=null){
+                  queue.add(node.left);
+            }
+            if(node.right!=null){
+                  deque.add(node.right);
+            }
+      }
+}
+
+```
+
+---
+
+DFS：
+```java
+public void depthTraversal(TreeNode root){
+       if(node==null){
+             System.out.print("empty tree");
+             return;
+       }
+       LinkedList<TreeNode> stack = new LinkedList<>();
+       stack.push(root);
+       while(!stack.isEmpty()){
+             ListNode rnode = stack.pop();
+             System.out.print(rnode.val);
+             if(rnode.right!=null){
+                   stack.push(rnode.right);
+             }
+             if(rnode.left!=null){
+                   stack.push(rnode.left);
+             }
+       }
+}
+```
+
+---
+
+层序遍历：
+
+---
+
+中序遍历非递归
+
+---
 ---
 
