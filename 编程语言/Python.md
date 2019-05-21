@@ -273,3 +273,11 @@ def produce(c):
 c = consumer()
 produce(c)
 ```
+
+#### Python中的多进程和多线程
+
+#### python函数式编程
+
+#### Python设计模式
+
+#### Python中的垃圾回收机制
