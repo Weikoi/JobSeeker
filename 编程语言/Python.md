@@ -10,6 +10,7 @@
 ---
 ### Python常识
 
+
 #### Python中的基本数据类型？
 
 Python3 中有六个标准的数据类型：
@@ -26,7 +27,7 @@ Python3 的六个标准数据类型中：
     不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
     可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。 
 
-
+---
 #### 如何理解Python 中的深浅拷贝？
 参考 https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html
 
@@ -68,7 +69,7 @@ print('深拷贝        d = ', d)
 """
 
 ```
-
+---
 #### 如何理解Python中的迭代器和生成器？
 
 1. 迭代器（iterator）是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。
@@ -132,7 +133,7 @@ while True:
     except StopIteration:
         sys.exit()
 ```
-
+---
 #### Python中可迭代对象(Iterable)和迭代器(Iterator)的区别？
 
 参考https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640
@@ -143,7 +144,7 @@ while True:
 
 所有的生成器都是迭代器。
     
-
+---
 #### 传递参数中的 *args and **kwargs
 
  *接受到的参数转成元组（意味着不限数量）
@@ -152,7 +153,7 @@ while True:
 
 只是约定，并非强制格式，但是 *args 必须在 **kwargs之前。
 
-
+---
 #### Python中的装饰器？
 
 装饰器是Python中闭包的语法糖。
@@ -204,7 +205,7 @@ def logging(fn):
 
 此外，以单下划线结尾仅仅是为了区别该名称与关键词，前后双下划线是Python语言自用的魔方方法。
 
-
+---
 #### Python中的元类？
 参考：https://www.liaoxuefeng.com/wiki/897692888725344/923030550637312
 
@@ -219,7 +220,7 @@ def logging(fn):
 所以，metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。
 
 
-
+---
 #### 什么是Python的自省(Introspection)? 一般用来做什么？
 
 自省就是指能够获得自身的结构和方法，给开发者可以灵活的调用，给定一个对象，返回该对象的所有属性和函数列表，或给定对象和该对象的函数或者属性的名字，返回对象的函数或者属性实例。
@@ -234,6 +235,7 @@ def logging(fn):
 
 结合Java的反射来理解，但是又有点区别，留坑待补，之后详细学习一下。
 
+---
 #### 什么是Python的协程？ 
 
 https://www.liaoxuefeng.com/wiki/1016959663602400/1017968846697824
@@ -273,11 +275,21 @@ def produce(c):
 c = consumer()
 produce(c)
 ```
+---
 
 #### Python中的多进程和多线程
 
+
+---
+
 #### python函数式编程
 
+
+---
+
 #### Python设计模式
+
+
+---
 
 #### Python中的垃圾回收机制
