@@ -26,6 +26,7 @@ Python3 的六个标准数据类型中：
     不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
     可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。 
 
+
 #### 如何理解Python 中的深浅拷贝？
 参考 https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html
 
@@ -78,7 +79,7 @@ print('深拷贝        d = ', d)
     
     1）用Iter()转换可迭代对象；
     
-    2）在类中实现两个方法 __iter__() 与 __next__()；
+    2）在类中实现两个方法 __iter__() 与 __next__();
 
     
 ```python
@@ -132,11 +133,15 @@ while True:
         sys.exit()
 ```
 
-#### Python中可迭代对象和迭代器的区别？
+#### Python中可迭代对象(Iterable)和迭代器(Iterator)的区别？
 
 参考https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640
 
-集合和生成器都是可迭代对象，但不是迭代器
+所有的迭代器都是可迭代对象。
+
+集合是可迭代对象，但不是迭代器，需要用iter()转换以后才是迭代器。
+
+所有的生成器都是迭代器。
     
 
 #### 传递参数中的 *args and **kwargs
@@ -149,6 +154,12 @@ while True:
 
 
 #### Python中的装饰器？
+
+装饰器是Python中闭包的语法糖。
+
+何为闭包？
+
+
 
 例如：
 ```python
@@ -211,7 +222,7 @@ def logging(fn):
 
 #### 什么是Python的自省(Introspection)? 一般用来做什么？
 
-自省：自省就是能够获得自身的结构和方法，给开发者可以灵活的调用，给定一个对象，返回该对象的所有属性和函数列表，或给定对象和该对象的函数或者属性的名字，返回对象的函数或者属性实例。
+自省就是指能够获得自身的结构和方法，给开发者可以灵活的调用，给定一个对象，返回该对象的所有属性和函数列表，或给定对象和该对象的函数或者属性的名字，返回对象的函数或者属性实例。
 常用的自省函数有：type(),dir(),getattr(),hasattr(),setattr(), delattr(), isinstance().
 
 其中：isinstance 和 type 的区别在于：
@@ -225,3 +236,40 @@ def logging(fn):
 
 #### 什么是Python的协程？ 
 
+https://www.liaoxuefeng.com/wiki/1016959663602400/1017968846697824
+
+协程，又称微线程，英文名Coroutine。
+
+协程看上去也是子程序，但执行过程中，在子程序内部可中断，然后转而执行别的子程序，在适当的时候再返回来接着执行
+
+协程的特点在于是一个线程执行，那和多线程比，协程有何优势？
+
+首先，最大的优势就是协程极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显。
+
+第二大优势就是不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多。
+
+因为协程是一个线程执行，那怎么利用多核CPU呢？最简单的方法是多进程+协程，既充分利用多核，又充分发挥协程的高效率，可获得极高的性能。
+
+```python
+def consumer():
+    r = ''
+    while True:
+        n = yield r
+        if not n:
+            return
+        print('[CONSUMER] Consuming %s...' % n)
+        r = '200 OK'
+
+def produce(c):
+    c.send(None)
+    n = 0
+    while n < 5:
+        n = n + 1
+        print('[PRODUCER] Producing %s...' % n)
+        r = c.send(n)
+        print('[PRODUCER] Consumer return: %s' % r)
+    c.close()
+
+c = consumer()
+produce(c)
+```
