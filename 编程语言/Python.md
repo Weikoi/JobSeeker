@@ -4,15 +4,37 @@
 
 (参考 https://www.liaoxuefeng.com/)
 
+(参考菜鸟教程https://www.runoob.com/python3/)
+
 ---
 ---
 ### Python常识
 
+#### Python中的基本数据类型？
+
+Python3 中有六个标准的数据类型：
+
+    Number（数字）
+    String（字符串）
+    List（列表）
+    Tuple（元组）
+    Set（集合）
+    Dictionary（字典）
+
+Python3 的六个标准数据类型中：
+
+    不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
+    可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。 
+
 #### 如何理解Python 中的深浅拷贝？
+参考 https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html
 
 ```python
 import copy
+
 """
+注意：以下所说的都是可变数据类型，不能是数字和字符串。
+
 对于直接赋值，只引用了最外层对象的地址，所以，原始对象无论如何改动，都会跟着变动；
 """
 """
@@ -46,13 +68,79 @@ print('深拷贝        d = ', d)
 
 ```
 
-#### 传递参数中的*args and **kwargs
+#### 如何理解Python中的迭代器和生成器？
 
- *接受到的参数转成元组
+1. 迭代器是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。
+
+    迭代器有两个基本的方法：iter() 和 next()， iter()用于创建迭代器对象， next()用于输出迭代器的下一个元素。字符串，列表或元组对象都可用于创建迭代器。
+    
+    创建生成器的常见方法有三个：
+    
+    1）用Iter()转换可迭代对象；
+    
+    2）在类中实现两个方法 __iter__() 与 __next__()；
+    
+    3）用迭代器表达式 (i for i in range(10))
+    
+```python
+
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+ 
+  def __next__(self):
+    if self.a <= 20:
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+ 
+myclass = MyNumbers()
+myiter = iter(myclass)
+ 
+for x in myiter:
+  print(x)
+
+```
+
+2.  在 Python 中，使用了 yield 的函数被称为生成器（generator）。
+
+    跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。
+
+    在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。
+
+    调用一个生成器函数，返回的是一个迭代器对象。
+    
+```python
+import sys
+ 
+def fibonacci(n): # 生成器函数 - 斐波那契
+    a, b, counter = 0, 1, 0
+    while True:
+        if (counter > n): 
+            return
+        yield a
+        a, b = b, a + b
+        counter += 1
+f = fibonacci(10) # f 是一个迭代器，由生成器返回生成
+ 
+while True:
+    try:
+        print (next(f), end=" ")
+    except StopIteration:
+        sys.exit()
+```
+    
+
+#### 传递参数中的 *args and **kwargs
+
+ *接受到的参数转成元组（意味着不限数量）
 
  ** 接受到的参数转成字典
 
-只是约定，并非强制格式。
+只是约定，并非强制格式，但是 *args 必须在 **kwargs之前。
 
 
 #### Python中的装饰器？
@@ -120,6 +208,11 @@ def logging(fn):
 
 自省：自省就是能够获得自身的结构和方法，给开发者可以灵活的调用，给定一个对象，返回该对象的所有属性和函数列表，或给定对象和该对象的函数或者属性的名字，返回对象的函数或者属性实例。
 常用的自省函数有：type(),dir(),getattr(),hasattr(),setattr(), delattr(), isinstance().
+
+其中：isinstance 和 type 的区别在于：
+ 
+    type()不会认为子类是一种父类类型。
+    isinstance()会认为子类是一种父类类型。
 
 看到一个说法：“自省”应该是语言原本的概念，特指在运行时获得object自身信息，是一种能力；“反射”是自省的一种实现方式，是具体的。
 
