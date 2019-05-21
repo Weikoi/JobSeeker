@@ -255,7 +255,17 @@ Process finished with exit code 0
 
 ---
 
-#### Java中的几个常用术语分别代表什么含义？
+#### Java中size(), length, length()求长度一般都什么时候用？
+
+size()用于求集合大小;
+
+length用来求数组长度;
+
+length()用来求字符串长度;
+
+---
+
+#### Java中的几个常用术语分别代表什么含义？(一般问前两个)
 分别是重写override，重载overloading，隐藏hiding，遮蔽shadowing，遮盖obscuring
 
 参考https://blog.csdn.net/devilmaycc/article/details/22792023
@@ -348,6 +358,16 @@ public static void main(String[] args) {
 推荐使用LinkedList来模拟栈，它实现了List和Deque的接口，自带pop和push操作。
 
 ---
+
+#### 何为反射，一般什么情况下会用到反射？
+
+JAVA反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。
+要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象.
+
+
+
+
+
 ---
 
 

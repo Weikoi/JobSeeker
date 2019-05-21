@@ -106,7 +106,7 @@ for x in myiter:
 
 2.  在 Python 中，使用了 yield 的函数被称为生成器（generator）。
 
-    或者使用生成器表达式 如：(i for i in range(10))
+    或者使用生成器表达式 如：(i for i in range(10)), 跟列表生成式相比，主要的优势是节约内存；
 
     跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。
 
@@ -131,6 +131,12 @@ while True:
     except StopIteration:
         sys.exit()
 ```
+
+#### Python中可迭代对象和迭代器的区别？
+
+参考https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640
+
+集合和生成器都是可迭代对象，但不是迭代器
     
 
 #### 传递参数中的 *args and **kwargs
