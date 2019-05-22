@@ -212,13 +212,13 @@ public void depthTraversal(TreeNode root){
        LinkedList<TreeNode> stack = new LinkedList<>();
        stack.push(root);
        while(!stack.isEmpty()){
-             ListNode rnode = stack.pop();
-             System.out.print(rnode.val);
-             if(rnode.right!=null){
-                   stack.push(rnode.right);
+             TreeNode node = stack.pop();
+             System.out.print(node.val);
+             if(node.right!=null){
+                   stack.push(node.right);
              }
-             if(rnode.left!=null){
-                   stack.push(rnode.left);
+             if(node.left!=null){
+                   stack.push(node.left);
              }
        }
 }
