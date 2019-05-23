@@ -43,9 +43,11 @@
 
  [6.1 Hadoop]
  
- [6.2 Spark/Storm/Samza]
+ [6.2 Spark]
  
  [6.3 Kafka]
+ 
+  [6.3 flink]
  
  ---
 ## 7.其它
