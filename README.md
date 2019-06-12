@@ -34,7 +34,7 @@
 
  [5.1 关系型数据库MySQL](数据库/关系型数据库MySQL.md)
  
- [5.2 非关系型数据库Redis]
+ [5.2 非关系型数据库Redis](数据库/Redis.md)
  
  [5.3 非关系型数据MongoDB]
  
