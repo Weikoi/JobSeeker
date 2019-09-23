@@ -38,7 +38,9 @@ public class GcdAlgorithms {
 #### 判断随机整数是否为素数
 
 注意 i 取平方减少判断次数,因为一个数不可能被大于自己完全平方根的数整除
+
 ```java
+
 import java.util.Random;
 
 public class numsDemo {
@@ -58,6 +60,7 @@ public class numsDemo {
     }
 }
 ```
+
 ---
 #### 牛顿迭代法（求完全平方根）
 Java实现开平方的牛顿迭代法. 就是求f(x)=x^2-C的根的正根。
@@ -148,24 +151,83 @@ public class binarySearch {
 
 <div align="center"> <img src="./pic/sort.png"/> </div>
 
+1. 插入排序思想
+
 1)直接插入排序：
 ```java
-public static void insertSort(int[] a) {
-    for (int i = 0; i < a.length - 1; i++) {
-        for (int j = i + 1; j > 0; j--) {
-            if (a[j] < a[j - 1]) {
-                int temp = a[j];
-                a[j] = a[j - 1];
-                a[j - 1] = temp;
+public class insert{
+    public static void insertSort(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (a[j] < a[j - 1]) {
+                    int temp = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = temp;
+                }
             }
         }
     }
 }
 ```
 
-|  平均时间复杂度 |最好情况|最坏情况|空间复杂度|
-|---|---|---|---|
-|O(n²)|O(n²) |O(n²) |O(1) |
+2）折半插入排序
+```java
+public class insert{
+    public static void insertSort(int[] a) {
+        int n = a.length;
+        for(int i=1;i<n;i++){
+            int temp = a[i];
+            int low=0;
+            int high=i-1;
+            while(low <= high){
+                int mid = (low+high)/2;
+                if(a[mid]>temp){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }
+    
+            for(int j=i-1;j>=low;j--){
+                a[j+1] = a[j];
+            }
+    
+            a[low] = temp;
+        }
+    }
+}
+```
+
+3）希尔排序
+
+```java
+
+
+```
+
+
+
+
+3.选择排序思想
+
+1)简单选择排序
+
+```java
+public class Selection{
+
+    public static void selectSort(int[] a){
+        int N = a.length;
+        for(int i =0; i<N; i++){
+            int minIndex = i;
+            for(int j = i+1; j<N; j++){
+                if(a[j]<a[minIndex]) minIndex = j
+            }
+        }
+    }
+}
+
+
+```
 
 2 希尔排序
 
@@ -178,7 +240,9 @@ public static void insertSort(int[] a) {
 #### 树算法
 
 BFS：
+
 ```java
+
 public void levelOrderTraversal(TreeNode root){
       if(node==null){
             System.out.print("empty tree"); 
